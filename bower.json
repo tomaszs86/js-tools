@@ -1,0 +1,14 @@
+{
+  "name": "js-tools",
+  "description": "js tools",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/tomaszs86/js-tools",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
