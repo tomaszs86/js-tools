@@ -1,0 +1,12 @@
+
+> js-tools@1.0.0 precompile:js D:\vscode\js-tools
+> npm run clean:js
+
+
+> js-tools@1.0.0 clean:js D:\vscode\js-tools
+> rimraf ./public/js
+
+
+> js-tools@1.0.0 compile:js D:\vscode\js-tools
+> tsc
+

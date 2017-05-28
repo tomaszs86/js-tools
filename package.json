@@ -8,18 +8,25 @@
     "bower": "bower",
     "gulp": "gulp",
     "http": "http-server -o --cors -c-1",
-
+    
     "mocha": "mocha",
     "lint": "jshint src",
-
-    "precompile:js": "npm run clean",
-    "compile:js": "tsc --outDir ./public/js/ --module commonjs ./src/typescript/tsCode.ts",
-    "clean": "rimraf ./public/js",
-
+    
+    "clean:less": "rimraf ./public/css",
+    "precompile:less": "npm run clean:less",
+    "compile:less": "lessc src/less/style.less public/css/style.css",
+    
+    "clean:js": "rimraf ./public/js",
+    "precompile:js": "npm run clean:js",
+    "compile:js": "tsc",
+    
     "pretest": "npm run lint",
     "test": "mocha test -u bdd -R spec",
-    "posttest": "echo after test"
-
+    "posttest": "echo after test",
+    
+    "bundle": "browserify ./public/js/first.js ./public/js/second.js | uglifyjs -mc > ./public/js/bundle.min.js",
+    "build": "npm run compile:less && npm run compile:js && npm run test & npm run bundle"
+    
   },
   "repository": {
     "type": "git",
@@ -33,12 +40,16 @@
   "homepage": "https://github.com/tomaszs86/js-tools#readme",
   "devDependencies": {
     "bower": "^1.8.0",
+    "browserify": "^14.4.0",
     "gulp": "^3.9.1",
     "http-server": "^0.10.0",
     "jshint": "^2.9.4",
+    "less": "^2.7.2",
     "mocha": "^3.4.2",
     "rimraf": "^2.6.1",
     "should": "^11.2.1",
-    "typescript": "^2.3.3"
+    "typescript": "^2.3.3",
+    "uglify-js": "^3.0.12",
+    "uglifyjs": "^2.4.11"
   }
 }
