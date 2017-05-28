@@ -4,9 +4,15 @@
   "description": "js tools project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "pretest": "echo before test",
+    "test": "mocha test -u bdd -R spec",
+    "posttest": "echo after test",
+    
     "bower": "bower",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "http": "http-server -o --cors -c-1",
+    "mocha": "mocha"
   },
   "repository": {
     "type": "git",
@@ -20,6 +26,9 @@
   "homepage": "https://github.com/tomaszs86/js-tools#readme",
   "devDependencies": {
     "bower": "^1.8.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "http-server": "^0.10.0",
+    "mocha": "^3.4.2",
+    "should": "^11.2.1"
   }
 }
