@@ -5,14 +5,21 @@
   "main": "index.js",
   "scripts": {
 
-    "pretest": "echo before test",
-    "test": "mocha test -u bdd -R spec",
-    "posttest": "echo after test",
-    
     "bower": "bower",
     "gulp": "gulp",
     "http": "http-server -o --cors -c-1",
-    "mocha": "mocha"
+
+    "mocha": "mocha",
+    "lint": "jshint src",
+
+    "precompile:js": "npm run clean",
+    "compile:js": "tsc --outDir ./public/js/ --module commonjs ./src/typescript/tsCode.ts",
+    "clean": "rimraf ./public/js",
+
+    "pretest": "npm run lint",
+    "test": "mocha test -u bdd -R spec",
+    "posttest": "echo after test"
+
   },
   "repository": {
     "type": "git",
@@ -28,7 +35,10 @@
     "bower": "^1.8.0",
     "gulp": "^3.9.1",
     "http-server": "^0.10.0",
+    "jshint": "^2.9.4",
     "mocha": "^3.4.2",
-    "should": "^11.2.1"
+    "rimraf": "^2.6.1",
+    "should": "^11.2.1",
+    "typescript": "^2.3.3"
   }
 }
