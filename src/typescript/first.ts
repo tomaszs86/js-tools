@@ -8,4 +8,4 @@ class Greeter {
     }
 }
 
-let greeter = new Greeter("world");
+let greeter = new Greeter("test");

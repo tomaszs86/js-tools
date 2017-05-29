@@ -4,29 +4,30 @@
   "description": "js tools project",
   "main": "index.js",
   "scripts": {
-
     "bower": "bower",
     "gulp": "gulp",
-    "http": "http-server -o --cors -c-1",
-    
     "mocha": "mocha",
     "lint": "jshint src",
-    
     "clean:less": "rimraf ./public/css",
+    "clean:js": "rimraf ./public/js",
+    "clean": "npm run clean:less && npm run clean:js",
+    "http": "http-server -o -c-1",
+    "watch:ts": "tsc -w",
+    "watch:less": "less-watch-compiler src/less public/css style.less",
+    "watch:browser": "live-reload --port 8080 public/",
+    "watch:concurrently": "concurrently --kill-others \"npm run watch:less\" \"npm run watch:browser\" \"npm run watch:ts\" \"npm run http\"",
+    "watch": "npm run clean && npm run watch:concurrently",
+
     "precompile:less": "npm run clean:less",
     "compile:less": "lessc src/less/style.less public/css/style.css",
-    
-    "clean:js": "rimraf ./public/js",
     "precompile:js": "npm run clean:js",
     "compile:js": "tsc",
-    
     "pretest": "npm run lint",
     "test": "mocha test -u bdd -R spec",
     "posttest": "echo after test",
-    
     "bundle": "browserify ./public/js/first.js ./public/js/second.js | uglifyjs -mc > ./public/js/bundle.min.js",
     "build": "npm run compile:less && npm run compile:js && npm run test & npm run bundle"
-    
+
   },
   "repository": {
     "type": "git",
@@ -45,11 +46,15 @@
     "http-server": "^0.10.0",
     "jshint": "^2.9.4",
     "less": "^2.7.2",
+    "less-watch-compiler": "^1.4.4",
+    "live-reload": "^1.1.0",
     "mocha": "^3.4.2",
+    "nodemon": "^1.11.0",
     "rimraf": "^2.6.1",
     "should": "^11.2.1",
     "typescript": "^2.3.3",
     "uglify-js": "^3.0.12",
-    "uglifyjs": "^2.4.11"
+    "uglifyjs": "^2.4.11",
+    "watchify": "^3.9.0"
   }
 }
