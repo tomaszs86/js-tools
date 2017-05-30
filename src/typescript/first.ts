@@ -4,8 +4,8 @@ class Greeter {
         this.greeting = message;
     }
     greet() {
-        return "Hello, " + this.greeting;
+        return "Hello2, " + this.greeting;
     }
 }
 
-let greeter = new Greeter("test");
+let greeter = new Greeter("test1");
